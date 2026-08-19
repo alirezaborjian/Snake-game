@@ -4,7 +4,7 @@ from init import *
 from functions import *
 
 clock = pygame.time.Clock()
-
+food_position = food_generator(snake)
 while True:
     game_display.fill(COLORS.get('Black'))
     
@@ -26,7 +26,7 @@ while True:
             elif event.key == pygame.K_RIGHT and direction != 'LEFT':
                 direction = 'RIGHT'
             
-    show(snake)
-    snake = update_screen(direction, snake)
+    show(snake, food_position)
+    snake, food_position = update_screen(direction, snake, food_position)
     pygame.display.update()
     clock.tick(SPEED)
